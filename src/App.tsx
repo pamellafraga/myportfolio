@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { PageId } from './nav'
 import { ContactSection } from './components/ContactSection'
 import { EducationSection } from './components/EducationSection'
@@ -12,6 +12,10 @@ import { TechnologiesSection } from './components/TechnologiesSection'
 
 function App() {
   const [page, setPage] = useState<PageId>('home')
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [page])
 
   return (
     <div className="relative min-h-svh overflow-x-hidden bg-[#0b111b] font-sans text-slate-200 antialiased">

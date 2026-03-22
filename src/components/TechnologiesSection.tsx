@@ -18,7 +18,6 @@ import {
   SiPython,
   SiReact,
   SiRedis,
-  SiSass,
   SiSqlite,
   SiSupabase,
   SiTailwindcss,
@@ -81,7 +80,6 @@ const GROUPS: {
       { name: 'Next.js', color: '#FFFFFF', render: icon(SiNextdotjs, '#FFFFFF') },
       { name: 'Bootstrap', color: '#7952B3', render: icon(SiBootstrap, '#7952B3') },
       { name: 'Tailwind', color: '#06B6D4', render: icon(SiTailwindcss, '#06B6D4') },
-      { name: 'Sass', color: '#CC6699', render: icon(SiSass, '#CC6699') },
       { name: 'jQuery', color: '#0769AD', render: icon(SiJquery, '#0769AD') },
       { name: 'Laravel', color: '#FF2D20', render: icon(SiLaravel, '#FF2D20') },
     ],
@@ -234,7 +232,7 @@ export function TechnologiesSection() {
           </div>
           <div className="flex flex-shrink-0 flex-wrap gap-3 md:flex-col md:items-stretch">
             {[
-              { k: '22+', l: 'ferramentas mapeadas' },
+              { k: '21+', l: 'ferramentas mapeadas' },
               { k: '4', l: 'pilares do stack' },
               { k: 'Prod', l: 'foco em código real' },
             ].map((s) => (
