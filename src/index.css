@@ -23,6 +23,23 @@ body {
   -webkit-tap-highlight-color: rgb(0 212 255 / 0.12);
 }
 
+/* PWA instalado: barra do sistema e splash alinhados ao logo PF */
+@media (display-mode: standalone) {
+  body {
+    background-color: #050a10;
+  }
+
+  .pwa-brand-backdrop .pwa-brand-layer {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pwa-brand-backdrop .pwa-brand-layer {
+    display: none;
+  }
+}
+
 /* Toque mais responsivo em mobile (menos atraso em alguns browsers) */
 button,
 [role='button'],

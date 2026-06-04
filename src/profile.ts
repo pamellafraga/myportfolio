@@ -17,4 +17,6 @@ export const PROFILE = {
    * Coloque o arquivo em `public/` e ajuste o caminho se o nome for outro.
    */
   signatureImage: '/assinatura.png',
+  /** Emblema PF — favicon, PWA e marca no fundo mobile */
+  brandLogo: '/logo-pf.png',
 } as const
