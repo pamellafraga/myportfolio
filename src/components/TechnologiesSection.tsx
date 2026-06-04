@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion'
+import { Globe, Plug, Smartphone } from 'lucide-react'
 import type { ReactNode } from 'react'
 import type { IconType } from 'react-icons'
 import {
+  SiAndroid,
+  SiApple,
   SiBootstrap,
   SiCss,
   SiGit,
   SiGithub,
+  SiGoogleplay,
   SiHtml5,
   SiJavascript,
   SiJquery,
@@ -22,6 +26,7 @@ import {
   SiSupabase,
   SiTailwindcss,
   SiTypescript,
+  SiVercel,
 } from 'react-icons/si'
 
 /** Marca Cursor (ícone estilizado — ambiente de desenvolvimento). */
@@ -48,6 +53,45 @@ type TechDef = {
 function icon(Icon: IconType, color: string) {
   return () => <Icon className="h-7 w-7 sm:h-8 sm:w-8" style={{ color }} aria-hidden />
 }
+
+function lucideIcon(Icon: typeof Globe, color: string) {
+  return () => <Icon className="h-7 w-7 sm:h-8 sm:w-8" style={{ color }} aria-hidden strokeWidth={1.75} />
+}
+
+type MobileLicenseDef = {
+  id: string
+  platform: string
+  detail: string
+  renderIcon: () => ReactNode
+  iconBox: string
+  accent: string
+  ring: string
+}
+
+const MOBILE_PUBLISHING_LICENSES: MobileLicenseDef[] = [
+  {
+    id: 'apple-dev',
+    platform: 'Apple Developer Program',
+    detail: 'Licenciada para publicação de aplicativos iOS na App Store.',
+    renderIcon: () => (
+      <SiApple className="h-8 w-8 text-white sm:h-9 sm:w-9" aria-hidden />
+    ),
+    iconBox: 'bg-white/[0.08] ring-white/15',
+    accent: 'from-[#a1a1aa]/25 to-[#0f1623]/40',
+    ring: 'hover:ring-white/25',
+  },
+  {
+    id: 'google-play',
+    platform: 'Google Play Console Developer',
+    detail: 'Licenciada para publicação de aplicativos Android na Google Play Store.',
+    renderIcon: () => (
+      <SiGoogleplay className="h-8 w-8 text-[#00D9FF] sm:h-9 sm:w-9" aria-hidden />
+    ),
+    iconBox: 'bg-[#00D9FF]/10 ring-[#00D9FF]/25',
+    accent: 'from-[#00D9FF]/15 to-[#0f1623]/40',
+    ring: 'hover:ring-[#00D9FF]/35',
+  },
+]
 
 const GROUPS: {
   id: string
@@ -116,6 +160,29 @@ const GROUPS: {
       },
     ],
   },
+  {
+    id: 'delivery',
+    title: 'Entrega digital & mobile',
+    subtitle:
+      'Aplicações web, PWAs, integrações, cloud e publicação nas lojas oficiais — do desenvolvimento ao app em produção.',
+    accent: 'from-[#6366f1]/18 via-[#06b6d4]/12 to-[#3DDC84]/10',
+    items: [
+      { name: 'Aplicações Web', color: '#00d4ff', render: lucideIcon(Globe, '#00d4ff') },
+      { name: 'PWAs', color: '#818cf8', render: lucideIcon(Smartphone, '#818cf8') },
+      { name: 'Integrações e APIs', color: '#22d3ee', render: lucideIcon(Plug, '#22d3ee') },
+      { name: 'Cloud & Deploy', color: '#FFFFFF', render: icon(SiVercel, '#FFFFFF') },
+      {
+        name: 'Publicação Android (Google Play)',
+        color: '#3DDC84',
+        render: icon(SiAndroid, '#3DDC84'),
+      },
+      {
+        name: 'Publicação iOS (App Store)',
+        color: '#A2AAAD',
+        render: icon(SiApple, '#A2AAAD'),
+      },
+    ],
+  },
 ]
 
 function TechTile({
@@ -145,12 +212,85 @@ function TechTile({
           <div className="flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-2xl bg-slate-800/80 ring-1 ring-white/10 transition-all duration-300 group-hover:scale-[1.06] group-hover:ring-[#00d4ff]/45 group-hover:shadow-[0_0_24px_-6px_rgb(0_212_255_/_0.25)] sm:h-14 sm:w-14">
             {tech.render()}
           </div>
-          <span className="max-w-[7rem] text-[11px] font-semibold leading-snug tracking-tight text-slate-200 sm:max-w-none sm:text-xs">
+          <span
+            title={tech.name}
+            className="max-w-[9rem] text-[11px] font-semibold leading-snug tracking-tight text-slate-200 sm:max-w-none sm:text-xs"
+          >
             {tech.name}
           </span>
         </div>
       </div>
     </motion.div>
+  )
+}
+
+function MobilePublishingSection() {
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#0f1623]/55 shadow-[0_20px_50px_-24px_rgb(0_0_0_/_0.35)] backdrop-blur-2xl sm:rounded-[2rem]"
+      aria-labelledby="publicacao-mobile-heading"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#00D9FF]/12 via-transparent to-[#a1a1aa]/10 opacity-70"
+        aria-hidden
+      />
+      <div className="relative border-b border-white/10 px-6 py-6 sm:px-8 sm:py-7">
+        <h3
+          id="publicacao-mobile-heading"
+          className="font-sans text-lg font-bold tracking-tight text-white sm:text-xl"
+        >
+          Publicação Mobile
+        </h3>
+        <p className="mt-1 max-w-2xl text-sm leading-relaxed text-slate-400">
+          Contas de desenvolvedora ativas nas plataformas oficiais — pronta para publicar e manter
+          apps em produção.
+        </p>
+      </div>
+      <ul className="relative grid gap-4 p-5 sm:grid-cols-2 sm:gap-5 sm:p-7">
+        {MOBILE_PUBLISHING_LICENSES.map((license, i) => (
+          <motion.li
+            key={license.id}
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-30px' }}
+            transition={{ delay: i * 0.06, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="group"
+          >
+            <div
+              className={`relative overflow-hidden rounded-2xl border border-white/10 bg-[#0f1623]/70 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#00d4ff]/25 hover:shadow-[0_0_28px_rgb(0_212_255_/_0.1)] sm:rounded-[1.25rem] sm:p-6 ${license.ring}`}
+            >
+              <div
+                className={`pointer-events-none absolute inset-0 bg-gradient-to-br opacity-60 ${license.accent}`}
+                aria-hidden
+              />
+              <div className="relative flex gap-4">
+                <span
+                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ring-1 sm:h-14 sm:w-14 ${license.iconBox}`}
+                  aria-hidden
+                >
+                  {license.renderIcon()}
+                </span>
+                <div className="min-w-0 text-left">
+                  <p className="font-sans text-sm font-bold text-white sm:text-base">
+                    {license.platform}
+                  </p>
+                  <p className="mt-2 flex items-start gap-2 text-sm leading-relaxed text-slate-400">
+                    <span className="mt-0.5 shrink-0 text-[#4ade80]" aria-hidden>
+                      ✔
+                    </span>
+                    <span>{license.detail}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.li>
+        ))}
+      </ul>
+    </motion.section>
   )
 }
 
@@ -224,16 +364,16 @@ export function TechnologiesSection() {
               Conjunto curado para{' '}
               <strong className="font-medium text-slate-200">entregar software em produção</strong>
               : front moderno, back PHP/Laravel,{' '}
-              <strong className="font-medium text-slate-200">bancos relacionais e NoSQL</strong>{' '}
-              (PostgreSQL, MySQL, MongoDB, Redis e outros), automação com Python e fluxo sólido com
-              Git, GitHub e <strong className="font-medium text-slate-200">Cursor</strong> no dia a
-              dia.
+              <strong className="font-medium text-slate-200">bancos relacionais e NoSQL</strong>,{' '}
+              <strong className="font-medium text-slate-200">PWAs e apps nas lojas</strong>, integrações
+              com APIs, cloud/deploy e fluxo sólido com Git, GitHub e{' '}
+              <strong className="font-medium text-slate-200">Cursor</strong> no dia a dia.
             </p>
           </div>
           <div className="flex flex-shrink-0 flex-wrap gap-3 md:flex-col md:items-stretch">
             {[
-              { k: '21+', l: 'ferramentas mapeadas' },
-              { k: '4', l: 'pilares do stack' },
+              { k: '27+', l: 'ferramentas mapeadas' },
+              { k: '5', l: 'pilares do stack' },
               { k: 'Prod', l: 'foco em código real' },
             ].map((s) => (
               <div
@@ -253,6 +393,7 @@ export function TechnologiesSection() {
       </motion.header>
 
       <div className="flex flex-col gap-6 sm:gap-8">
+        <MobilePublishingSection />
         {GROUPS.map((group, i) => (
           <GroupCard key={group.id} group={group} index={i} />
         ))}
