@@ -60,11 +60,11 @@ export function SideNav({ active, onNavigate }: SideNavProps) {
       {/* Reserva o mesmo espaço da coluna original no layout desktop; posição medida para o nav fixo */}
       <div
         ref={spacerRef}
-        className="hidden w-14 shrink-0 lg:block"
+        className="hidden w-11 shrink-0 lg:block"
         aria-hidden
       />
       <nav
-        className="nav-mobile-scroll fixed z-50 flex gap-2 rounded-full border border-white/10 bg-[#0f1623]/95 px-2 py-2.5 shadow-[0_0_40px_-8px_rgb(0_212_255_/_0.25),0_12px_40px_-12px_rgb(0_0_0_/_0.5),inset_0_1px_0_rgb(255_255_255_/_0.06)] backdrop-blur-xl max-lg:max-h-[min(88svh,520px)] max-lg:max-w-[min(calc(100vw-1.25rem),calc(100vw-env(safe-area-inset-left)-env(safe-area-inset-right)-1rem))] max-lg:flex-row max-lg:flex-nowrap max-lg:snap-x max-lg:snap-mandatory max-lg:overflow-x-auto max-lg:overflow-y-hidden sm:gap-2 sm:px-3 sm:py-2.5 lg:flex-col lg:overflow-visible lg:px-2.5 lg:py-5"
+        className="side-nav-dock nav-mobile-scroll fixed z-50 flex gap-1 rounded-full border border-white/10 bg-[#0f1623]/92 px-1.5 py-1.5 shadow-[0_0_32px_-10px_rgb(0_212_255_/_0.28),0_10px_32px_-14px_rgb(0_0_0_/_0.55),inset_0_1px_0_rgb(255_255_255_/_0.06)] backdrop-blur-xl max-lg:max-w-[min(calc(100vw-1.25rem),calc(100vw-env(safe-area-inset-left)-env(safe-area-inset-right)-1rem))] max-lg:flex-row max-lg:flex-nowrap max-lg:snap-x max-lg:snap-mandatory max-lg:overflow-x-auto max-lg:overflow-y-hidden sm:gap-1.5 sm:px-2 sm:py-1.5 lg:flex-col lg:gap-1 lg:overflow-visible lg:px-1.5 lg:py-2"
         style={navStyle}
         aria-label="Navegação principal"
       >
@@ -77,16 +77,16 @@ export function SideNav({ active, onNavigate }: SideNavProps) {
               aria-label={label}
               aria-current={isActive ? 'page' : undefined}
               onClick={() => onNavigate(id)}
-              whileHover={{ scale: 1.06 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.94 }}
               className={[
-                'relative flex h-12 w-12 shrink-0 snap-center items-center justify-center rounded-full transition-colors duration-300 max-lg:active:scale-95 sm:h-12 sm:w-12',
+                'relative flex h-9 w-9 shrink-0 snap-center items-center justify-center rounded-full transition-colors duration-300 sm:h-10 sm:w-10',
                 isActive
-                  ? 'bg-[#00d4ff]/20 text-[#00d4ff] shadow-[0_0_24px_rgb(0_212_255_/_0.55),0_0_48px_rgb(0_212_255_/_0.2)] ring-2 ring-[#00d4ff]/50'
+                  ? 'bg-[#00d4ff]/22 text-[#00d4ff] shadow-[0_0_18px_rgb(0_212_255_/_0.45),0_0_32px_rgb(0_212_255_/_0.15)] ring-1 ring-[#00d4ff]/55'
                   : 'text-slate-400 hover:bg-white/5 hover:text-white',
               ].join(' ')}
             >
-              <Icon className="h-5 w-5" strokeWidth={isActive ? 2.25 : 1.75} />
+              <Icon className="h-4 w-4" strokeWidth={isActive ? 2.25 : 1.75} />
             </motion.button>
           )
         })}

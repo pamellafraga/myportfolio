@@ -64,3 +64,15 @@ a {
 .nav-mobile-scroll::-webkit-scrollbar {
   display: none;
 }
+
+/* Dock lateral — cápsula compacta e arredondada */
+.side-nav-dock {
+  isolation: isolate;
+}
+
+@media (min-width: 1024px) {
+  .side-nav-dock {
+    width: 3.25rem;
+    border-radius: 9999px;
+  }
+}

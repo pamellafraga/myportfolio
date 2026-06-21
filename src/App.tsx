@@ -21,7 +21,7 @@ function App() {
     <div className="relative min-h-svh overflow-x-hidden bg-[#0b111b] font-sans text-slate-200 antialiased">
       <TechBackdrop />
 
-      <div className="relative z-10 mx-auto flex min-h-svh max-w-6xl flex-col gap-3 pl-[max(0.75rem,env(safe-area-inset-left))] pr-[max(0.75rem,env(safe-area-inset-right))] pt-[max(0.75rem,env(safe-area-inset-top))] pb-[calc(7rem+env(safe-area-inset-bottom,0px))] max-lg:gap-4 sm:pl-5 sm:pr-5 sm:pt-6 lg:flex-row lg:items-stretch lg:gap-6 lg:pl-8 lg:pr-8 lg:pt-8 lg:pb-10">
+      <div className="relative z-10 mx-auto flex min-h-svh max-w-6xl flex-col gap-3 pl-[max(0.75rem,env(safe-area-inset-left))] pr-[max(0.75rem,env(safe-area-inset-right))] pt-[max(0.75rem,env(safe-area-inset-top))] pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] max-lg:gap-4 sm:pl-5 sm:pr-5 sm:pt-6 lg:flex-row lg:items-stretch lg:gap-5 lg:pl-8 lg:pr-8 lg:pt-8 lg:pb-10">
         <SideNav active={page} onNavigate={setPage} />
 
         <div className="flex min-h-0 min-w-0 flex-1 flex-col rounded-2xl border border-white/10 bg-[#121a26]/85 p-3.5 shadow-[0_0_0_1px_rgb(0_212_255_/_0.06),0_24px_80px_-24px_rgb(0_0_0_/_0.55),inset_0_1px_0_rgb(255_255_255_/_0.04)] backdrop-blur-2xl sm:rounded-[2.25rem] sm:p-6 md:p-8 lg:min-h-[min(100vh-4rem,900px)]">
